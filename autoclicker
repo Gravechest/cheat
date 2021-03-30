@@ -1,0 +1,15 @@
+#include <windows.h>
+int main() {
+	INPUT inp;
+	inp.type = INPUT_MOUSE;
+	while (true) {
+		Sleep(10);
+		while (GetKeyState(VK_RBUTTON) < 0) {  
+			inp.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+			SendInput(1, &inp, sizeof(inp));
+			inp.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+			SendInput(1, &inp, sizeof(inp));
+			
+		}
+	}
+}
